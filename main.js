@@ -63,7 +63,7 @@ phina.define('MainScene', {
        this.generateNapa(100*i,600,'napa',100,-3);
     }
     for(let i = 1;i <= napaNum2;i++){
-       this.generateNapa(150*i,400,'napa2',200,-6);
+       this.generateNapa(120*i,400,'napa2',200,-6);
     }
     for(let i = 1;i <= napaNum3;i++){
        this.generateNapa(200*i,200,'napa3',300,-9);
