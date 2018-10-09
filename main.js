@@ -15,7 +15,7 @@ var ASSETS = {
      bg: 'https://i.imgur.com/8ioMgMn.png'
   },
    sound: {
-    'bgm': 'https://rawgit.com/alkn203/phina_js_tips/master/assets/sounds/bgm_maoudamashii_8bit25.mp3',
+    'bgm': 'https://rawgit.com/alkn203/phina_js_tips/master/assets/sounds/bgm_maoudamashii_8bit25.mp3'
   },
 };
 
