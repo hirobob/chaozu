@@ -160,9 +160,9 @@ phina.define('MainScene', {
       } else if(point > 2000 && point <= 3000){
         self.exit('result',{score:point,message:'あと少しだ！！がんばれチョアズ！！'});
       } else if(point > 1000 && point <= 2000){
-        self.exit('result',{score:point,message:'サイバイマン以下だな！！まだまだ修業がたりないな！！'});
+        self.exit('result',{score:point,message:'サイバイマン以下だな！！'});
       } else if(point > 0 && point <= 1000){
-        self.exit('result',{score:point,message:'ラディッツ以下だな！！まだまだ修業がたりないな！！'});
+        self.exit('result',{score:point,message:'ラディッツ以下だな！！'});
       } else if(point < 0) {
         self.exit('result',{score:point,message:'テンさんを殺してんじゃねえよ！！'});
       } else  {
