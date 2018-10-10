@@ -155,7 +155,7 @@ phina.define('MainScene', {
     
     var self = this;
     if(timeCount <= 0){
-      if(point  3500){
+      if(point > 3500){
         self.exit('result',{score:point,message:'パーフェクト！体が震え上がったよ！'});
       } else if(point > 3000 && point < 3500){
         self.exit('result',{score:point,message:'テンさんを助けてくれてありがとう！'});
