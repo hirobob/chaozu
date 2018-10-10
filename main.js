@@ -15,7 +15,9 @@ var ASSETS = {
      bg: 'https://i.imgur.com/8ioMgMn.png'
   },
    sound: {
-    'bgm': 'https://raw.githubusercontent.com/hirobob/chaozu/master/sekai.mp3'
+    'bgm': 'https://raw.githubusercontent.com/hirobob/chaozu/master/furueru.mp3',
+    'sayonaraten':'https://raw.githubusercontent.com/hirobob/chaozu/master/sayonaraten.aac',
+    'oitekita':'https://raw.githubusercontent.com/hirobob/chaozu/master/oitekita.mp3',
   },
 };
 
@@ -108,7 +110,7 @@ phina.define('MainScene', {
         var c3 = Circle(bullet.x,bullet.y,20);
                // 円判定
         if (Collision.testCircleCircle(c1,c3)) {
-          //SoundManager.play('bgmTen');
+          SoundManager.play('sayonaraten');
           bullet.remove();
           ten.remove();
           point -= 10000;
@@ -166,6 +168,7 @@ phina.define('MainScene', {
       } else if(point > 0 && point < 1000){
         self.exit('result',{score:point,message:'ラディッツ以下だな！！残業詐欺すんな！'});
       } else if(point < 0) {
+        SoundManager.play('oitekita');
         self.exit('result',{score:point,message:'テンさんを殺してんじゃねえよ！！'});
       } else  {
         self.exit('result',{score:point,message:'やる気あんのかよ！！'});
