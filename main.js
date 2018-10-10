@@ -15,9 +15,9 @@ var ASSETS = {
      bg: 'https://i.imgur.com/8ioMgMn.png'
   },
    sound: {
-    'bgm': 'https://raw.githubusercontent.com/hirobob/chaozu/master/furueru.mp3',
+    'bgm': 'https://raw.githubusercontent.com/hirobob/chaozu/master/furueru.aac',
     'sayonaraten':'https://raw.githubusercontent.com/hirobob/chaozu/master/sayonaraten.aac',
-    'oitekita':'https://raw.githubusercontent.com/hirobob/chaozu/master/oitekita.mp3',
+    'oitekita':'https://raw.githubusercontent.com/hirobob/chaozu/master/oitekita.aac',
   },
 };
 
