@@ -296,6 +296,14 @@ phina.main(function() {
     fps: 30,                 // 1秒間に画面を更新する回数
     assets: ASSETS         //アセット
   });
+
+app.domElement.addEventListener('touchend', function dummy() {
+  var s = phina.asset.Sound();
+  s.loadFromBuffer();
+  s.play().stop();
+  app.domElement.removeEventListener('touchend', dummy);
+});
+
   
   // アプリケーション実行
   app.run();
