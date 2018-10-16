@@ -531,8 +531,12 @@ phina.define("TitleScene", {
       text: '天さん死なないで',
       fontSize: 64,
       fill: 'white',
-    }).addChildTo(this).setPosition(this.gridX.center(), this.gridY.span(4)-150);
-
+    }).addChildTo(this).setPosition(this.gridX.center(), this.gridY.span(4)-180);
+    Label({
+      text: '【パーフェクトを達成すると何か起きる！】',
+      fontSize: 30,
+      fill: 'white',
+    }).addChildTo(this).setPosition(this.gridX.center(), this.gridY.span(4)-120);
     Label({
       text: "TOUCH START",
       fontSize: 64,
@@ -558,7 +562,7 @@ phina.main(function() {
     height: SCREEN_HEIGHT,   // スクリーンの縦幅
     backgroundColor: '#444', // スクリーンの背景色
     autoPause: true,         // 初期ポーズをするか
-    debug: true,             // デバッグモードにするか
+    debug: false,             // デバッグモードにするか
     fps: 60,                 // 1秒間に画面を更新する回数
     assets: ASSETS           // アセット
   });
