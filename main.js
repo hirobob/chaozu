@@ -5,12 +5,21 @@ phina.globalize();
 var ASSETS = {
   image: {
      map: 'https://rawgit.com/shioleap/tomapiko-action/master/assets/map.png',
-     chiaotzu: 'https://i.imgur.com/GfapwLa.png',
-     ten: 'https://i.imgur.com/0ZWrzH8.png',
-     napa: 'https://i.imgur.com/yUhJBHy.png',
-     napa2: 'https://i.imgur.com/CR1xxDT.png',
-     napa3: 'https://i.imgur.com/t8asDrF.png',
-     napa4: 'https://i.imgur.com/ieUGEJU.png',
+     chiaotzu: 'https://i.imgur.com/bLZxhkY.png',
+     //chiaotzu: 'https://i.imgur.com/GfapwLa.png',
+     
+      ten: 'https://i.imgur.com/5KclatE.png',
+     //ten: 'https://i.imgur.com/0ZWrzH8.png',
+     //napa: 'https://i.imgur.com/yUhJBHy.png',
+     //napa2: 'https://i.imgur.com/CR1xxDT.png',
+     //napa3: 'https://i.imgur.com/t8asDrF.png',
+    // napa4: 'https://i.imgur.com/ieUGEJU.png',
+     
+      napa: 'https://i.imgur.com/txXZd6D.png',
+       napa2: 'https://i.imgur.com/txXZd6D.png',
+        napa3: 'https://i.imgur.com/txXZd6D.png',
+         napa4: 'https://i.imgur.com/txXZd6D.png',
+         
      chiaotzu_bullet:' https://i.imgur.com/KvisS15.png',
      bg: 'https://i.imgur.com/8ioMgMn.png',
      senzu_bullet: 'https://i.imgur.com/rnbh0NR.png',
@@ -29,7 +38,7 @@ var ASSETS = {
 var SCREEN_WIDTH  = 640;
 var SCREEN_HEIGHT = 960;
 var CHIAOTZU_TOP = 800;
-var napaNum = 6; // enemyの数
+var napaNum = 12; // enemyの数
 var napaNum2 = 5; // enemyの数
 var napaNum3 = 3; // enemyの数
 var napaNum4= 1; // enemyの数
@@ -78,19 +87,19 @@ phina.define('Scene01', {
 
     // 天津飯を追加
     this.tenGroup = DisplayElement().addChildTo(this);
-    Ten(0,300,8).addChildTo(this.tenGroup);
+    Ten(0,300,6).addChildTo(this.tenGroup);
     Ten(0,500,3).addChildTo(this.tenGroup);
     
     // 敵グループ(ナッパ)作成
     this.enemyGroup = DisplayElement().addChildTo(this);
     for(let i = 1;i <= napaNum;i++){
-       this.generateNapa(100*i,600,'napa',100,-1);
+       this.generateNapa(50*i,600,'napa',100,-1);
     }
     for(let i = 1;i <= napaNum2;i++){
        this.generateNapa(120*i,400,'napa2',200,-3);
     }
     for(let i = 1;i <= napaNum3;i++){
-       this.generateNapa(200*i,200,'napa3',300,-5);
+       this.generateNapa(200*i,200,'napa3',300,-4);
     }
         for(let i = 1;i <= napaNum4;i++){
        this.generateNapa(250*i,50,'napa4',1000,-10);
@@ -118,8 +127,8 @@ phina.define('Scene01', {
     this.enemyGroup.children.each(function(enemy) {
       self.bulletGroup.children.each(function(bullet) {
         // 判定用の円
-        var c1 = Circle(enemy.x,enemy.y,40);
-        var c3 = Circle(bullet.x,bullet.y,20); 
+        var c1 = Circle(enemy.x,enemy.y,20);
+        var c3 = Circle(bullet.x,bullet.y,10); 
         // 円判定
         if (Collision.testCircleCircle(c1,c3)) {
           if(!isSenzu){
@@ -144,8 +153,8 @@ phina.define('Scene01', {
        //ten.scaleX += 1.01;
       //ten.scaleY += 1.01;
     self.bulletGroup.children.each(function(bullet) {
-        var c1 = Circle(ten.x,ten.y,40);
-        var c3 = Circle(bullet.x,bullet.y,20);
+        var c1 = Circle(ten.x,ten.y,20);
+        var c3 = Circle(bullet.x,bullet.y,10);
                // 円判定
         if (Collision.testCircleCircle(c1,c3)) {
           SoundManager.play('sayonaraten');
@@ -196,7 +205,8 @@ phina.define('Scene01', {
       SoundManager.stopMusic();
       
       if(point > 3500){
-        this.exit();
+        //this.exit();
+        app.replaceScene(EndScene(point,'織田裕二'))
       } else if(point >= 3000 && point < 3500){
         app.replaceScene(EndScene(point,'テンさんを助けてくれてありがとう！'))
       } else if(point >= 2000 && point < 3000){
@@ -207,8 +217,8 @@ phina.define('Scene01', {
         app.replaceScene(EndScene(point,'ラディッツ以下だな！！残業詐欺すんな！'))
       } else if(point < 0) {
         // SoundManager.play('oitekita');
-        this.exit();
-        //app.replaceScene(EndScene(point,'テンさんを殺してんじゃねえよ！！'))
+        //this.exit();
+        app.replaceScene(EndScene(point,'テンさんを殺してんじゃねえよ！！'))
       } else  {
         app.replaceScene(EndScene(point,'やる気あんのかよ！！'))
       }
@@ -369,7 +379,7 @@ phina.define('Chiaotzu', {
   superClass: 'Sprite',
   
   init: function() {
-    this.superInit('chiaotzu', 64, 64);
+    this.superInit('chiaotzu', 100, 100);
     this.setInteractive(true); // タッチ可能にする
     this.setPosition(SCREEN_WIDTH / 6,SCREEN_HEIGHT / 6);
     this.setOrigin(0.5, 0);    //y座標の基準点を一番上に
@@ -412,7 +422,7 @@ phina.define('Bullet',{
   superClass: 'Sprite',
   
   init:function(image,player_x,player_y){
-    this.superInit(image,30,30);
+    this.superInit(image,20,20);
     this.physical.velocity.y = -8;
   },
   
@@ -430,7 +440,7 @@ phina.define('Ten', {
   superClass: 'Sprite',
   
   init: function(setPositionX, setPositionY,moveSpeed) {
-    this.superInit('ten', 64, 64);//親クラス初期化
+    this.superInit('ten', 90, 90);//親クラス初期化
     this.setPosition(setPositionX, setPositionY);//位置をセット
     this.setOrigin(0.5, 0); //y座標の基準点を一番上に
     this.scaleX = -1;//左右反転
@@ -444,7 +454,7 @@ phina.define('Napa', {
   superClass: 'Sprite',
   
   init: function(setPositionX, setPositionY,level,point,moveSpeed) {
-    this.superInit(level, 90, 90);//親クラス初期化
+    this.superInit(level, 50, 50);//親クラス初期化
     this.setPosition(setPositionX, setPositionY);//位置をセット(X,Y)
     this.setOrigin(0.5, 0);//y座標の基準点を一番上に
     this.point = point;
@@ -554,7 +564,7 @@ phina.main(function() {
   // アプリケーション生成
   var app = GameApp({
     scenes: [{className: 'TitleScene', label: 'title', nextLabel: 'scene01',},
-             {className: 'Scene01', label: 'scene01', nextLabel: 'scene02',},
+             {className: 'Scene01', label: 'scene01', nextLabel: 'title',},
              {className: 'Scene02', label: 'scene02', nextLabel: 'scene01',},
             ],
     startLabel: 'title',
